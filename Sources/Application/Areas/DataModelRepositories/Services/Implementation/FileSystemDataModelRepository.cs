@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Mmu.Mlh.DataAccess.Areas.DatabaseAccess;
 using Mmu.Mlh.DataAccess.Areas.DataModeling.Models;
 using Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Servants;
-using System.Linq;
 
 namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Implementation
 {
@@ -16,10 +16,10 @@ namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Imp
         private readonly IFileSystemProxy _fileProxy;
 
         public FileSystemDataModelRepository(
-            IFileSystemProxy fileProxy,
+            IFileSystemProxy fileSystemProxy,
             IDataModelFileAdapter<T, TId> dataModelFileAdapter)
         {
-            _fileProxy = fileProxy;
+            _fileProxy = fileSystemProxy;
             _dataModelFileAdapter = dataModelFileAdapter;
         }
 
