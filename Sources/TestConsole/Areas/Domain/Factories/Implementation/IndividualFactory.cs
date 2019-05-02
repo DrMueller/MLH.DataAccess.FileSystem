@@ -8,7 +8,7 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.Domain.Factories.Imple
         public Individual Create(string firstName, string lastName, DateTime birthdate, long? id = null)
         {
             return new Individual(
-                id,
+                id ?? 0,
                 firstName,
                 lastName,
                 birthdate);

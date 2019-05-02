@@ -46,9 +46,10 @@ namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Ser
         private string CreateFilePath(string fileName)
         {
             var directoryPath = _fileSystemSettingsProvider.ProvideFileSystemSettings().DirectoryPath;
+            var filePath = _fileSystem.Path.Combine(directoryPath, fileName);
+            filePath = _fileSystem.Path.ChangeExtension(filePath, FileExtension);
 
-            var result = _fileSystem.Path.Combine(directoryPath, fileName, FileExtension);
-            return result;
+            return filePath;
         }
 
         private IEnumerable<string> EnumerateFilesInDefinedPath()

@@ -1,4 +1,6 @@
 ﻿using Mmu.Mlh.ConsoleExtensions.Areas.Commands.Models;
+using Mmu.Mlh.DataAccess.FileSystem.Infrastructure.Settings.Services;
+using Mmu.Mlh.DataAccess.FileSystem.TestConsole.Infrastructure.Settings.Services;
 using StructureMap;
 
 namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Infrastructure.DependencyInjection
@@ -15,6 +17,8 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Infrastructure.DependencyInj
 
                     scanner.AddAllTypesOf<IConsoleCommand>();
                 });
+
+            For<IFileSystemSettingsProvider>().Use<SettingsProvider>().Singleton();
         }
     }
 }

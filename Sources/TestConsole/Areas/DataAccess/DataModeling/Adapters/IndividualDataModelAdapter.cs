@@ -12,7 +12,11 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.DataModelin
 
         public override Individual Adapt(IndividualDataModel dataModel)
         {
-            return null;
+            return new Individual(
+                dataModel.Id,
+                dataModel.FirstName,
+                dataModel.LastName,
+                dataModel.Birthdate);
         }
     }
 }

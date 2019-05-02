@@ -5,7 +5,7 @@ using Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.DataModeling.Ad
 
 namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.Repositories.DataModelRepositories.Implementation
 {
-    public class IndividualDataModelRepository : FileSystemDataModelRepository<IndividualDataModel, long>
+    public class IndividualDataModelRepository : FileSystemDataModelRepository<IndividualDataModel, long>, IIndividualDataModelRepository
     {
         public IndividualDataModelRepository(
             IFileSystemProxy fileSystemProxy,

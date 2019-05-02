@@ -1,12 +1,17 @@
-﻿using System;
+﻿using Mmu.Mlh.ConsoleExtensions.Areas.Commands.Services;
+using Mmu.Mlh.ServiceProvisioning.Areas.Initialization.Models;
+using Mmu.Mlh.ServiceProvisioning.Areas.Initialization.Services;
 
 namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole
 {
-    class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
-            Console.WriteLine("Hello World!");
+            var containerConfig = ContainerConfiguration.CreateFromAssembly(typeof(Program).Assembly, initializeAutoMapper: true);
+            var container = ContainerInitializationService.CreateInitializedContainer(containerConfig);
+
+            container.GetInstance<IConsoleCommandsStartupService>().Start();
         }
     }
 }

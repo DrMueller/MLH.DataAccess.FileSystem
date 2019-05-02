@@ -1,4 +1,5 @@
-﻿using StructureMap;
+﻿using System.IO.Abstractions;
+using StructureMap;
 
 namespace Mmu.Mlh.DataAccess.FileSystem.Infrastructure.DependencyInjection
 {
@@ -12,6 +13,8 @@ namespace Mmu.Mlh.DataAccess.FileSystem.Infrastructure.DependencyInjection
                     scanner.AssemblyContainingType<DataAccessFileSystemRegistry>();
                     scanner.WithDefaultConventions();
                 });
+
+            For<IFileSystem>().Use<System.IO.Abstractions.FileSystem>();
         }
     }
 }

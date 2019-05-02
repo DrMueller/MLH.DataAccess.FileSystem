@@ -1,5 +1,6 @@
 ﻿using Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Models;
 using Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Servants;
+using Newtonsoft.Json;
 
 namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.DataModeling.Adapters
 {
@@ -7,12 +8,19 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.DataModelin
     {
         public IndividualDataModel AdaptToDataModel(File dataModelFile)
         {
-            return null;
+            if (string.IsNullOrEmpty(dataModelFile.Content))
+            {
+                return new IndividualDataModel();
+            }
+
+            var result = JsonConvert.DeserializeObject<IndividualDataModel>(dataModelFile.Content);
+            return result;
         }
 
         public File AdaptToFile(IndividualDataModel dataModel)
         {
-            return null;
+            var content = JsonConvert.SerializeObject(dataModel);
+            return new File(dataModel.Id.ToString(), content);
         }
     }
 }

@@ -6,7 +6,7 @@ using Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.Domain.Models;
 
 namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.Repositories.Implementation
 {
-    public class IndividualRepository : RepositoryBase<Individual, IndividualDataModel, long>
+    public class IndividualRepository : RepositoryBase<Individual, IndividualDataModel, long>, IIndividualRepository
     {
         public IndividualRepository(
             IIndividualDataModelRepository dataModelRepository,
