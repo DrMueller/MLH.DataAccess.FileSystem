@@ -4,13 +4,13 @@ using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
 
 namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.Domain.Models
 {
-    public class Individual : AggregateRoot<long>
+    public class Individual : AggregateRoot<string>
     {
         public DateTime Birthdate { get; }
         public string FirstName { get; }
-        public string LastName { get; }
+        public string LastName { get; set; }
 
-        public Individual(long id, string firstName, string lastName, DateTime birthdate)
+        public Individual(string firstName, string lastName, DateTime birthdate, string id)
             : base(id)
         {
             Guard.ObjectNotNull(() => firstName);

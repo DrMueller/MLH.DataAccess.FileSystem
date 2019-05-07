@@ -5,13 +5,13 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.Domain.Factories.Imple
 {
     public class IndividualFactory : IIndividualFactory
     {
-        public Individual Create(string firstName, string lastName, DateTime birthdate, long? id = null)
+        public Individual Create(string firstName, string lastName, DateTime birthdate, string id = null)
         {
             return new Individual(
-                id ?? 0,
                 firstName,
                 lastName,
-                birthdate);
+                birthdate,
+                id);
         }
     }
 }

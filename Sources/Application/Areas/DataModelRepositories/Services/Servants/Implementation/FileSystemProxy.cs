@@ -1,27 +1,28 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.IO.Abstractions;
 using System.Linq;
+using Mmu.Mlh.DataAccess.Areas.DataModeling.Models;
 using Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Models;
-using Mmu.Mlh.DataAccess.FileSystem.Infrastructure.Settings.Services;
 
 namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Servants.Implementation
 {
-    public class FileSystemProxy : IFileSystemProxy
+    internal class FileSystemProxy<T> : IFileSystemProxy<T>
+        where T : AggregateRootDataModel<string>
     {
         private const string FileExtension = ".json";
         private readonly IFileSystem _fileSystem;
-        private readonly IFileSystemSettingsProvider _fileSystemSettingsProvider;
+        private readonly IDirectoryProxy<T> _directoryProxy;
 
-        public FileSystemProxy(IFileSystem fileSystem, IFileSystemSettingsProvider fileSystemSettingsProvider)
+        public FileSystemProxy(IFileSystem fileSystem, IDirectoryProxy<T> directoryProxy)
         {
             _fileSystem = fileSystem;
-            _fileSystemSettingsProvider = fileSystemSettingsProvider;
+            _directoryProxy = directoryProxy;
         }
 
         public void DeleteFile(string id)
         {
             var filePath = CreateFilePath(id);
-            _fileSystem.Directory.Delete(filePath);
+            _fileSystem.File.Delete(filePath);
         }
 
         public IReadOnlyCollection<File> LoadAllFiles()
@@ -40,21 +41,26 @@ namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Ser
         public void SaveFile(File file)
         {
             var filePath = CreateFilePath(file.FileName);
+
+            if (!_fileSystem.File.Exists(filePath))
+            {
+                _fileSystem.File.Create(filePath).Dispose();
+            }
+
             _fileSystem.File.WriteAllText(filePath, file.Content);
         }
 
         private string CreateFilePath(string fileName)
         {
-            var directoryPath = _fileSystemSettingsProvider.ProvideFileSystemSettings().DirectoryPath;
+            var directoryPath = _directoryProxy.GetDirectoryPathAndAssureExists();
             var filePath = _fileSystem.Path.Combine(directoryPath, fileName);
             filePath = _fileSystem.Path.ChangeExtension(filePath, FileExtension);
-
             return filePath;
         }
 
         private IEnumerable<string> EnumerateFilesInDefinedPath()
         {
-            var directoryPath = _fileSystemSettingsProvider.ProvideFileSystemSettings().DirectoryPath;
+            var directoryPath = _directoryProxy.GetDirectoryPathAndAssureExists();
             return _fileSystem.Directory.EnumerateFiles(directoryPath);
         }
     }

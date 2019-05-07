@@ -4,12 +4,12 @@ using Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.DataModeling;
 
 namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.Repositories.DataModelRepositories.Implementation
 {
-    public class IndividualDataModelRepository : FileSystemDataModelRepository<IndividualDataModel>, IIndividualDataModelRepository
+    public class OrganisationDataModelRepository : FileSystemDataModelRepository<OrganisationDataModel>, IOrganisationDataModelRepository
     {
-        public IndividualDataModelRepository(
-            IFileSystemProxy<IndividualDataModel> fileSystemProxy,
-            IDataModelFileAdapter<IndividualDataModel> fileAdapter)
-            : base(fileSystemProxy, fileAdapter)
+        public OrganisationDataModelRepository(
+            IFileSystemProxy<OrganisationDataModel> fileSystemProxy,
+            IDataModelFileAdapter<OrganisationDataModel> dataModelFileAdapter)
+            : base(fileSystemProxy, dataModelFileAdapter)
         {
         }
     }

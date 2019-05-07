@@ -3,7 +3,7 @@ using Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.DataModeling;
 
 namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.Repositories.DataModelRepositories
 {
-    public interface IIndividualDataModelRepository : IDataModelRepository<IndividualDataModel, string>
+    public interface IOrganisationDataModelRepository : IDataModelRepository<OrganisationDataModel, string>
     {
     }
 }

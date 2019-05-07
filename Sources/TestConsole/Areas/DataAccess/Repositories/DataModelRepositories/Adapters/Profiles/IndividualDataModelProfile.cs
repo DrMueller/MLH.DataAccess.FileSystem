@@ -1,7 +1,8 @@
-﻿using AutoMapper;
+using AutoMapper;
+using Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.DataModeling;
 using Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.Domain.Models;
 
-namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.DataModeling.Profiles
+namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.Repositories.DataModelRepositories.Adapters.Profiles
 {
     public class IndividualDataModelProfile : Profile
     {

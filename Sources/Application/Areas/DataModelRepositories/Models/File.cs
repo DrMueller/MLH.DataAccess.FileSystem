@@ -1,4 +1,4 @@
-﻿using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
+using Mmu.Mlh.LanguageExtensions.Areas.Invariance;
 
 namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Models
 {

@@ -1,10 +1,11 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Mmu.Mlh.DataAccess.Areas.DataModeling.Services.Implementation;
+using Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.DataModeling;
 using Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.Domain.Models;
 
-namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.DataModeling.Adapters
+namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.Repositories.DataModelRepositories.Adapters.Implementation
 {
-    public class IndividualDataModelAdapter : DataModelAdapterBase<IndividualDataModel, Individual, long>
+    public class IndividualDataModelAdapter : DataModelAdapterBase<IndividualDataModel, Individual, string>, IIndividualDataModelAdapter
     {
         public IndividualDataModelAdapter(IMapper mapper) : base(mapper)
         {
@@ -13,10 +14,10 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.DataAccess.DataModelin
         public override Individual Adapt(IndividualDataModel dataModel)
         {
             return new Individual(
-                dataModel.Id,
                 dataModel.FirstName,
                 dataModel.LastName,
-                dataModel.Birthdate);
+                dataModel.Birthdate,
+                dataModel.Id);
         }
     }
 }

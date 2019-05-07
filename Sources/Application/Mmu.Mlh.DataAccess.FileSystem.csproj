@@ -17,7 +17,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\IdGeneration\Factories\Servants\Implementation\" />
     <Folder Include="Infrastructure\Assets\" />
   </ItemGroup>
 

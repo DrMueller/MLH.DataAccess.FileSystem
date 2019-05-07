@@ -14,7 +14,6 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Infrastructure.DependencyInj
                 {
                     scanner.AssemblyContainingType(typeof(TestConsoleRegistry));
                     scanner.WithDefaultConventions();
-
                     scanner.AddAllTypesOf<IConsoleCommand>();
                 });
 
