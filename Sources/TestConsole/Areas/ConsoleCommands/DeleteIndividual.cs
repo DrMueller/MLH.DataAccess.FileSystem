@@ -9,10 +9,6 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.ConsoleCommands
 {
     public class DeleteIndividual : IConsoleCommand
     {
-        public string Description => "Delete Individual";
-
-        public ConsoleKey Key => ConsoleKey.D3;
-
         private readonly IConsoleWriter _consoleWriter;
         private readonly IIndividualRepository _individualRepository;
 
@@ -23,6 +19,10 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.ConsoleCommands
             _consoleWriter = consoleWriter;
             _individualRepository = individualRepository;
         }
+
+        public string Description => "Delete Individual";
+
+        public ConsoleKey Key => ConsoleKey.D3;
 
         public async Task ExecuteAsync()
         {

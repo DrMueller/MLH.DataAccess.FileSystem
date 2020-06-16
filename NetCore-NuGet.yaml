@@ -1,9 +1,11 @@
-name: 2.1$(rev:.r) # build numbering format
+name: 2.2$(rev:.r) # build numbering format
 
 variables:
   BuildConfiguration: 'Release'
   FolderToPack: 'Application'
-  ParentWorkitemId: 311
+  SolutionName: 'MLH.DataAccess.FileSystem.sln' 
+  ApplicationSubPath: 'MLH.DataAccess.FileSystem' # The logic doesn't use the full repository name, therefore we cant use the build variable
+  ReSharperSettingsFileName: 'CISettings_NuGet.DotSettings'
 
 resources:
   repositories:
@@ -14,12 +16,19 @@ resources:
     endpoint: GitHub-DrMueller
 
 jobs:
-- template: AzureDevOps/Templates/JobTemplates/NetCore/Build_And_Publish_To_NuGet.yaml@ALMStuff
-  parameters:
-    FolderToPack: $(FolderToPack)
-    BuildConfiguration: $(BuildConfiguration)
-
-- template: AzureDevOps/Templates/JobTemplates/NetCore/Create_AzureDevOps_Release.yaml@ALMStuff
-  parameters:
-    DependsOnJobName: 'BuildAndPublishToNuGet'
-    ParentWorkitemId: $(ParentWorkItemId)
+- job: 'BuildAndPublishToNuGet'
+  displayName: 'Build and publish to NuGet'
+  pool:
+    name: 'Hosted VS2017'
+  steps:
+  - checkout: self
+  - checkout: ALMStuff
+  - template: AzureDevOps/BuildTemplates/NetCore/Steps/Initialize_And_Test.yaml@ALMStuff
+    parameters:
+      BuildConfiguration: $(BuildConfiguration)
+      SolutionName: $(SolutionName)
+      ApplicationSubPath: $(ApplicationSubPath)
+      ReSharperSettingsFileName: $(ReSharperSettingsFileName)
+  - template: AzureDevOps/BuildTemplates/NetCore/Steps/Pack_And_Publish_To_NuGet.yaml@ALMStuff
+    parameters:
+      FolderToPack: $(FolderToPack)

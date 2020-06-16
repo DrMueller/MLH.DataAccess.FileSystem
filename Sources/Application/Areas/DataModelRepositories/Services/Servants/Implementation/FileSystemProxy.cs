@@ -10,8 +10,8 @@ namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Ser
         where T : AggregateRootDataModel<string>
     {
         private const string FileExtension = ".json";
-        private readonly IFileSystem _fileSystem;
         private readonly IDirectoryProxy<T> _directoryProxy;
+        private readonly IFileSystem _fileSystem;
 
         public FileSystemProxy(IFileSystem fileSystem, IDirectoryProxy<T> directoryProxy)
         {
@@ -32,6 +32,7 @@ namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Ser
                 {
                     var fileName = _fileSystem.Path.GetFileName(filePath);
                     var fileContent = _fileSystem.File.ReadAllText(filePath);
+
                     return new File(fileName, fileContent);
                 });
 
@@ -55,12 +56,14 @@ namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Ser
             var directoryPath = _directoryProxy.GetDirectoryPathAndAssureExists();
             var filePath = _fileSystem.Path.Combine(directoryPath, fileName);
             filePath = _fileSystem.Path.ChangeExtension(filePath, FileExtension);
+
             return filePath;
         }
 
         private IEnumerable<string> EnumerateFilesInDefinedPath()
         {
             var directoryPath = _directoryProxy.GetDirectoryPathAndAssureExists();
+
             return _fileSystem.Directory.EnumerateFiles(directoryPath);
         }
     }

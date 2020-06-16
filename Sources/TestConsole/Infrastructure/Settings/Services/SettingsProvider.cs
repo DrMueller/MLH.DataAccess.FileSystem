@@ -9,7 +9,7 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Infrastructure.Settings.Serv
         {
             return new FileSystemSettings
             {
-                DirectoryPath = @"C:\Users\Matthias\Desktop\Work\tra"
+                DirectoryPath = @"C:\Temp\Tra"
             };
         }
     }

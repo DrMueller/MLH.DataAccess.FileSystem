@@ -6,8 +6,8 @@ namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Ser
     public interface IDataModelFileAdapter<T>
         where T : AggregateRootDataModel<string>
     {
-        File AdaptToFile(T dataModel);
-
         T AdaptToDataModel(File dataModelFile);
+
+        File AdaptToFile(T dataModel);
     }
 }

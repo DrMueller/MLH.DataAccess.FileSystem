@@ -10,11 +10,11 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.ConsoleCommands
 {
     public class CreateIndividual : IConsoleCommand
     {
-        private static readonly Random Random = new Random();
+        private static readonly Random _random = new Random();
 
         private readonly IConsoleWriter _consoleWriter;
-        private readonly IIndividualRepository _individualRepo;
         private readonly IIndividualFactory _individualFactory;
+        private readonly IIndividualRepository _individualRepo;
 
         public CreateIndividual(
             IConsoleWriter consoleWriter,
@@ -32,8 +32,8 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.ConsoleCommands
         public async Task ExecuteAsync()
         {
             var individual = _individualFactory.Create(
-                "Matthias " + Random.Next(1, 100),
-                "Müller " + Random.Next(1, 100),
+                "Matthias " + _random.Next(1, 100),
+                "Müller " + _random.Next(1, 100),
                 new DateTime(1986, 12, 29));
 
             var savedIndividual = await _individualRepo.SaveAsync(individual);

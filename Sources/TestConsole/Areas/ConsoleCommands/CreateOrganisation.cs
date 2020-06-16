@@ -10,15 +10,11 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.ConsoleCommands
 {
     public class CreateOrganisation : IConsoleCommand
     {
-        private static readonly Random Random = new Random();
+        private static readonly Random _random = new Random();
 
         private readonly IConsoleWriter _consoleWriter;
-        private readonly IOrganisationRepository _organisationRepo;
         private readonly IOrganisationFactory _organisationFactory;
-
-        public string Description => "Create Organisation";
-
-        public ConsoleKey Key => ConsoleKey.D5;
+        private readonly IOrganisationRepository _organisationRepo;
 
         public CreateOrganisation(
             IConsoleWriter consoleWriter,
@@ -30,9 +26,13 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.ConsoleCommands
             _organisationFactory = organisationFactory;
         }
 
+        public string Description => "Create Organisation";
+
+        public ConsoleKey Key => ConsoleKey.D5;
+
         public async Task ExecuteAsync()
         {
-            var organisation = _organisationFactory.Create("Test Name " + Random.Next(1, 1000));
+            var organisation = _organisationFactory.Create("Test Name " + _random.Next(1, 1000));
             var savedOrganisation = await _organisationRepo.SaveAsync(organisation);
 
             _consoleWriter.WriteLine(JsonConvert.SerializeObject(savedOrganisation), ConsoleColor.Black, ConsoleColor.Green);

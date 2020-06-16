@@ -15,8 +15,8 @@ namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Ser
         public File AdaptToFile(T dataModel)
         {
             var fileContent = JsonConvert.SerializeObject(dataModel);
-            var fileName = string.Concat(dataModel.Id);
-            return new File(fileName, fileContent);
+
+            return new File(dataModel.Id, fileContent);
         }
     }
 }

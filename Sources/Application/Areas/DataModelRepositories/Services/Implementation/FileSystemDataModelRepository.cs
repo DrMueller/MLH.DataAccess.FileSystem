@@ -14,7 +14,7 @@ namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Imp
         private readonly IDataModelFileAdapter<T> _dataModelFileAdapter;
         private readonly IFileSystemProxy<T> _fileProxy;
 
-        public FileSystemDataModelRepository(
+        protected FileSystemDataModelRepository(
             IFileSystemProxy<T> fileSystemProxy,
             IDataModelFileAdapter<T> dataModelFileAdapter)
         {
@@ -24,7 +24,8 @@ namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Imp
 
         public Task DeleteAsync(string id)
         {
-            _fileProxy.DeleteFile(id.ToString());
+            _fileProxy.DeleteFile(id);
+
             return Task.CompletedTask;
         }
 
@@ -44,6 +45,7 @@ namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Imp
         public async Task<T> LoadSingleAsync(Expression<Func<T, bool>> predicate)
         {
             var dataModels = await LoadAsync(predicate);
+
             return dataModels.SingleOrDefault();
         }
 
@@ -57,6 +59,7 @@ namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Imp
             var file = _dataModelFileAdapter.AdaptToFile(aggregateRootDataModel);
 
             _fileProxy.SaveFile(file);
+
             return Task.FromResult(aggregateRootDataModel);
         }
     }

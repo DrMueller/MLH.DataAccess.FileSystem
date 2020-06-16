@@ -13,10 +13,6 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.ConsoleCommands
         private readonly IConsoleWriter _consoleWriter;
         private readonly IIndividualRepository _individualRepository;
 
-        public string Description => "Update Individual";
-
-        public ConsoleKey Key => ConsoleKey.D2;
-
         public UpdateIndividual(
             IConsoleWriter consoleWriter,
             IIndividualRepository individualRepository)
@@ -24,6 +20,10 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Areas.ConsoleCommands
             _consoleWriter = consoleWriter;
             _individualRepository = individualRepository;
         }
+
+        public string Description => "Update Individual";
+
+        public ConsoleKey Key => ConsoleKey.D2;
 
         public async Task ExecuteAsync()
         {
