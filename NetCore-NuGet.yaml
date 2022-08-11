@@ -1,9 +1,9 @@
-name: 2.3$(rev:.r) # build numbering format
+name: 3.0$(rev:.r) # build numbering format
 
 variables:
   BuildConfiguration: 'Release'
   FolderToPack: 'Application'
-  SolutionName: 'MLH.DataAccess.FileSystem.sln' 
+  SolutionName: 'MLH.DataAccess.FileSystem.sln'
   ApplicationSubPath: 'MLH.DataAccess.FileSystem' # The logic doesn't use the full repository name, therefore we cant use the build variable
   ReSharperSettingsFileName: 'CISettings_NuGet.DotSettings'
 
@@ -14,12 +14,12 @@ resources:
     name: DrMueller/ALMStuff
     ref: refs/heads/master
     endpoint: GitHub-DrMueller
-
+    
 jobs:
 - job: 'BuildAndPublishToNuGet'
   displayName: 'Build and publish to NuGet'
   pool:
-    name: 'Hosted VS2017'
+    vmImage: windows-2022
   steps:
   - checkout: self
   - checkout: ALMStuff
