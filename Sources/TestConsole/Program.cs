@@ -8,7 +8,7 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole
     {
         public static void Main()
         {
-            var containerConfig = ContainerConfiguration.CreateFromAssembly(typeof(Program).Assembly, initializeAutoMapper: true);
+            var containerConfig = ContainerConfiguration.CreateFromAssembly(typeof(Program).Assembly, initializeAutoMapper: false);
             var container = ServiceProvisioningInitializer.CreateContainer(containerConfig);
 
             container.GetInstance<IConsoleCommandsStartupService>().Start();

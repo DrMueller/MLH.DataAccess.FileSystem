@@ -1,6 +1,6 @@
 ﻿using Lamar;
 using Mmu.Mlh.ConsoleExtensions.Areas.Commands.Models;
-using Mmu.Mlh.DataAccess.FileSystem.Infrastructure.Settings.Services;
+using Mmu.Mlh.DataAccess.FileSystem.Areas.Settings.Services;
 using Mmu.Mlh.DataAccess.FileSystem.TestConsole.Infrastructure.Settings.Services;
 
 namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Infrastructure.DependencyInjection

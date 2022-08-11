@@ -1,4 +1,4 @@
-﻿namespace Mmu.Mlh.DataAccess.FileSystem.Infrastructure.Settings.Models
+﻿namespace Mmu.Mlh.DataAccess.FileSystem.Areas.Settings.Models
 {
     public class FileSystemSettings
     {

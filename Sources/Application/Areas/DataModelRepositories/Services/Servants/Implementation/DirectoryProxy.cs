@@ -1,5 +1,5 @@
 ﻿using System.IO.Abstractions;
-using Mmu.Mlh.DataAccess.FileSystem.Infrastructure.Settings.Services;
+using Mmu.Mlh.DataAccess.FileSystem.Areas.Settings.Services;
 
 namespace Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Servants.Implementation
 {

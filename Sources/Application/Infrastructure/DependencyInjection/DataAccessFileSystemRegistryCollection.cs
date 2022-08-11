@@ -2,6 +2,7 @@
 using Lamar;
 using Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Servants;
 using Mmu.Mlh.DataAccess.FileSystem.Areas.DataModelRepositories.Services.Servants.Implementation;
+using Mmu.Mlh.DataAccess.FileSystem.Areas.Settings.Services;
 
 namespace Mmu.Mlh.DataAccess.FileSystem.Infrastructure.DependencyInjection
 {
@@ -13,6 +14,7 @@ namespace Mmu.Mlh.DataAccess.FileSystem.Infrastructure.DependencyInjection
                 scanner =>
                 {
                     scanner.AssemblyContainingType<DataAccessFileSystemRegistryCollection>();
+                    scanner.ExcludeType<IFileSystemSettingsProvider>();
                     scanner.WithDefaultConventions();
                 });
 
