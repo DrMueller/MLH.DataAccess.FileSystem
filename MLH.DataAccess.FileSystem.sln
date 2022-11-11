@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.352
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mmu.Mlh.DataAccess.FileSystem", "Sources\Application\Mmu.Mlh.DataAccess.FileSystem.csproj", "{4B831186-7F77-4E5A-95DB-B12E6AD23311}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mmu.Mlh.DataAccess.FileSystem.TestConsole", "Sources\TestConsole\Mmu.Mlh.DataAccess.FileSystem.TestConsole.csproj", "{3107CD04-F032-4F60-AAF5-497723A51D06}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mmu.Mlh.ServiceProvisioning", "..\MLH.ServiceProvisioning\Sources\Application\Mmu.Mlh.ServiceProvisioning.csproj", "{9A53EF7B-66F7-4C97-ACE7-3A1B250AB224}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3107CD04-F032-4F60-AAF5-497723A51D06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3107CD04-F032-4F60-AAF5-497723A51D06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3107CD04-F032-4F60-AAF5-497723A51D06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A53EF7B-66F7-4C97-ACE7-3A1B250AB224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A53EF7B-66F7-4C97-ACE7-3A1B250AB224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A53EF7B-66F7-4C97-ACE7-3A1B250AB224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A53EF7B-66F7-4C97-ACE7-3A1B250AB224}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

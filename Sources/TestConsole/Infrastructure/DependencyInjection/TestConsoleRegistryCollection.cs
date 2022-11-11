@@ -1,4 +1,5 @@
 ﻿using Lamar;
+using Microsoft.Extensions.DependencyInjection;
 using Mmu.Mlh.ConsoleExtensions.Areas.Commands.Models;
 using Mmu.Mlh.DataAccess.FileSystem.Areas.Settings.Services;
 using Mmu.Mlh.DataAccess.FileSystem.TestConsole.Infrastructure.Settings.Services;
@@ -18,6 +19,8 @@ namespace Mmu.Mlh.DataAccess.FileSystem.TestConsole.Infrastructure.DependencyInj
                 });
 
             For<IFileSystemSettingsProvider>().Use<SettingsProvider>().Singleton();
+
+            this.AddAutoMapper(typeof(TestConsoleRegistryCollection));
         }
     }
 }

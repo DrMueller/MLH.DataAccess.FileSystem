@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\MLH.ServiceProvisioning\Sources\Application\Mmu.Mlh.ServiceProvisioning.csproj" />
     <ProjectReference Include="..\Application\Mmu.Mlh.DataAccess.FileSystem.csproj" />
   </ItemGroup>
 
